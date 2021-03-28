@@ -107,7 +107,7 @@
     <ClCompile Include="dependencies.cpp" />
     <ClCompile Include="example.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\dev\components\kage2dutil\kage2dutil.vcxproj">
