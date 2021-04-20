@@ -4,6 +4,7 @@ Aditionally, keep in mind that the int main() function script clashes with the i
 reason the int main function here is commented for the meantime, until two separate projects are defined. For now, to see this script
 in action, uncomment the int main() in this script, and comment out the one in the Main script.
 */
+/*
 #include <SFML/Graphics.hpp>
 
 using namespace std;
@@ -113,7 +114,6 @@ struct Paddle
 //The game loop: This is where all the necessary components instantiated, updated and drawn over and over, until the
 //program will be exited using the Escape Key, as defined (or by closing the program window).
 
-/*
 int main()
 {
     Ball ball{ windowWidth / 2, windowHeight / 2 };
@@ -140,4 +140,5 @@ int main()
 
     return 0;
 }
+
 */

@@ -135,7 +135,25 @@ void Example::update(float deltaT)
 		TileID = 0;
 	}
 
+	if (ImGui::Button("Save"))
+	{
+		Save();
+	}
+
 	ImGui::End();
+}
+
+void Example::Save()
+{
+	//std::cout << "Map Saved!" << std::endl;
+	
+	std::ofstream myfile;
+	myfile.open("map.data");
+
+	for (size_t i = 0; i < TILES_ARRAY_SIZE; i++)
+	{
+		myfile << tiles[i].id << ", ";
+	}
 }
 
 void Example::render()
