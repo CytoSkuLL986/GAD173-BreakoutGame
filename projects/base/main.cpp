@@ -1,6 +1,3 @@
-/*
-*/
-
 #include "cmath"
 #include "kf/kf_log.h"
 #include "example.h"
