@@ -33,7 +33,9 @@ public:
 	static Example &inst();
 
 	void Save();
-	void Loading();
+	void Load();
+
+	//SetTilesToMap();
 
 	int TileID = 0;
 

@@ -1,4 +1,7 @@
 #include "example.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 
 Example::Example(): App()
 {
@@ -57,6 +60,8 @@ bool Example::start()
 
 	return true;
 }
+
+
 
 void Example::update(float deltaT)
 {
@@ -140,6 +145,11 @@ void Example::update(float deltaT)
 		Save();
 	}
 
+	if (ImGui::Button("Load"))
+	{
+		Load();
+	}
+
 	ImGui::End();
 }
 
@@ -154,6 +164,27 @@ void Example::Save()
 	{
 		myfile << tiles[i].id << ", ";
 	}
+}
+
+void Example::Load()
+{
+	
+
+	using namespace std;
+
+		string line;
+		ifstream myfile("map.data");
+		if (myfile.is_open())
+		{
+			while (getline(myfile, line))
+			{
+				cout << line << '\n';             	//cout << line << "line printed" << "\n";	           
+			}
+			myfile.close();
+		}
+
+		else cout << "Unable to open file";
+	
 }
 
 void Example::render()
