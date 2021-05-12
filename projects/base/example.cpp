@@ -160,30 +160,82 @@ void Example::Save()
 	std::ofstream myfile;
 	myfile.open("map.data");
 
+
 	for (size_t i = 0; i < TILES_ARRAY_SIZE; i++)
 	{
-		myfile << tiles[i].id << ", ";
+		std::string data = std::to_string(tiles[i].id) + ", ";
+		
+		myfile << data;
+
 	}
 }
 
 void Example::Load()
 {
 	
-
 	using namespace std;
+	
+	string line;
+	ifstream myfile("map.data");
+	if (myfile.is_open())
+	{
+		
+		int index = 0;
+		int mapIndex = 0;
 
-		string line;
-		ifstream myfile("map.data");
-		if (myfile.is_open())
+		int x = 0;
+		int y = 0;
+		while (getline(myfile, line))
 		{
-			while (getline(myfile, line))
-			{
-				cout << line << '\n';             	//cout << line << "line printed" << "\n";	           
-			}
-			myfile.close();
-		}
+	
+			while (index <= line.length()) {
+				index = line.find(", ");
 
-		else cout << "Unable to open file";
+				std::string word = line.substr(0, index);
+				line = line.substr(index + 2);
+				
+				sf::Sprite sprite;
+				int value = std::stoi(word);
+				//switch statement for associating tile textues with different tileIDs, and switching between them.
+				switch (value)
+				{
+				case 0:
+					break;
+				case 1:
+					sprite.setTexture(*sapphire);
+					break;
+				case 2:
+					sprite.setTexture(*diamond);
+					break;
+				case 3:
+					sprite.setTexture(*stone);
+					break;
+
+				default:
+					sprite.setTexture(*questionMark);
+					break;
+				}
+
+				sprite.setPosition(sf::Vector2f(x * CELL_WIDTH, y * CELL_HEIGHT));
+
+				tiles[mapIndex].sprite = sprite;
+				tiles[mapIndex].id = value;
+				//std::cout << "index: " << mapIndex << " - " << word << std::endl;
+				mapIndex++;
+				x++;
+				if (x >= TOTAL_CELLS_X - 1){
+					y++;
+					x = 0;
+				}
+			}
+
+			//cout << line << '\n';
+		}
+		myfile.close();
+	}
+
+	else cout << "Unable to open file";
+
 	
 }
 
