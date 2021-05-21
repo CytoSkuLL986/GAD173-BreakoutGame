@@ -1,8 +1,7 @@
 #pragma once
-
+#include "Scene.h"
 #include "app.h"
-#include "kage2dutil/physics.h"
-#include "rabbit.h"
+#include <vector>
 
 class Example : public App
 {
@@ -13,7 +12,12 @@ public:
 	virtual void update(float deltaT);
 	virtual void render();
 	virtual void cleanup();
+	void Load(int index);
 	static Example &inst();
 
-	sf::Sprite *m_backgroundSprite;
+	std::vector<Scene*> scenes;
+
+	int currentSceneIndex = -1;
+
+
 };

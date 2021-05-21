@@ -70,13 +70,16 @@ void Example::update(float deltaT)
 	//Defining what can happen by clicking left mouse button
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 	{
-		int x = mouseposition.x / CELL_WIDTH;
-		int y = mouseposition.y / CELL_HEIGHT;
+		
+		int x = mouseposition.x / CELL_WIDTH; 
+		int y = mouseposition.y / CELL_HEIGHT; 
 
+		//std::cout <<"MOUASE POS:" << mouseposition.x << " - " << mouseposition.y << std::endl;
 		//setting restrictions as to where tiles can be placed
 		if (x >= 0 && y >= 0 &&
 			x < (TOTAL_CELLS_X - 1) && y < (TOTAL_CELLS_Y - 1))
 		{
+
 			int i = x + y * (TOTAL_CELLS_X - 1);
 
 			sf::Sprite sprite;
@@ -177,6 +180,7 @@ void Example::Load()
 	
 	string line;
 	ifstream myfile("map.data");
+	
 	if (myfile.is_open())
 	{
 		
@@ -189,42 +193,42 @@ void Example::Load()
 		{
 	
 			while (index <= line.length()) {
-				index = line.find(", ");
+				index = line.find(", "); // finds location of the comma and space! :D
+								
+				std::string word = line.substr(0, index); // starts from where we want to extract characters
 
-				std::string word = line.substr(0, index);
-				line = line.substr(index + 2);
-				
-				sf::Sprite sprite;
-				int value = std::stoi(word);
+				line = line.substr(index + 2); // updates itself to remove what we initially processed 
+			
+				int value = std::stoi(word);// converts string to an integer 
+
 				//switch statement for associating tile textues with different tileIDs, and switching between them.
 				switch (value)
 				{
 				case 0:
 					break;
 				case 1:
-					sprite.setTexture(*sapphire);
+					tiles[mapIndex].sprite.setTexture(*sapphire); 
 					break;
 				case 2:
-					sprite.setTexture(*diamond);
+					tiles[mapIndex].sprite.setTexture(*diamond);
 					break;
 				case 3:
-					sprite.setTexture(*stone);
+					tiles[mapIndex].sprite.setTexture(*stone);
 					break;
 
 				default:
-					sprite.setTexture(*questionMark);
+					tiles[mapIndex].sprite.setTexture(*questionMark);
 					break;
 				}
-
-				sprite.setPosition(sf::Vector2f(x * CELL_WIDTH, y * CELL_HEIGHT));
-
-				tiles[mapIndex].sprite = sprite;
+				
+				tiles[mapIndex].sprite.setPosition(sf::Vector2f(x * CELL_WIDTH, y * CELL_HEIGHT));
 				tiles[mapIndex].id = value;
 				//std::cout << "index: " << mapIndex << " - " << word << std::endl;
 				mapIndex++;
 				x++;
+
 				if (x >= TOTAL_CELLS_X - 1){
-					y++;
+					y++; 
 					x = 0;
 				}
 			}
