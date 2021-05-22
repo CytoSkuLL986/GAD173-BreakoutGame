@@ -16,6 +16,8 @@
 
 #define TILES_ARRAY_SIZE (TOTAL_CELLS_X - 1) * (TOTAL_CELLS_Y - 1)
 
+//This class inherits from the Scenes class (as seen by the ': public Scene'). Like the MenuScene class,
+//this class inherits 3 functions from Scene: Load() , Update() , and Render().
 class GameScene : public Scene
 {
 

@@ -1,5 +1,7 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+
+//The base class from which the Gamescenes (and consequent scenes) will inherit from.
 class Scene
 {
 public:

@@ -40,10 +40,11 @@ void Example::update(float deltaT)
 		m_running = false;
 	}
 
+	//Setting Buttons for different scenes, changing + updating the currentSceneIndex (to change the scene).
 	ImGui::Begin("Kage2D");
 	if (ImGui::Button("Menu")) {
 		Load(0);
-	} else if (ImGui::Button("Level 1")) {
+	} else if (ImGui::Button("Load Level 1 Map")) {
 		Load(1);
 	} else if(ImGui::Button("Exit")) { 
 		m_running = false;

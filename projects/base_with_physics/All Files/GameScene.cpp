@@ -15,7 +15,7 @@ GameScene::GameScene()
 void GameScene::Load(){
 
 
-//Retrieving the created button textures and assigning them to the pointers made for them (currently in Example.h).
+//Retrieving the created button textures and assigning them to the pointers made for them (in GameScene.h).
 sapphire = kage::TextureManager::getTexture("data/sapphire.png");
 diamond = kage::TextureManager::getTexture("data/diamond.png");
 stone = kage::TextureManager::getTexture("data/stone.png");
